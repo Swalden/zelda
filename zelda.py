@@ -6,8 +6,8 @@ import sys
 from twilio.rest import Client
 from flask import Flask, request
 from twilio import twiml
-from pocketsphinx.pocketsphinx import *
-from sphinxbase.sphinxbase import *
+# from pocketsphinx.pocketsphinx import *
+# from sphinxbase.sphinxbase import *
 from wit import Wit
 
 # Perhaps something like this http://rasa-nlu.readthedocs.io/en/stable/index.html to handle offline intents 
@@ -24,6 +24,7 @@ WIT_AI_KEY = "PXIASINGVEDWFS3JOSJ3HKIU224GGLMF"  # Wit.ai keys are 32-character 
 w = Wit('PXIASINGVEDWFS3JOSJ3HKIU224GGLMF')
 
 client = Client('AC69124796ce884c143582d3721d1c4321', '97ccece141f49dd41e65e11afda47820')
+
 
 resp = w.converse('luffy',sys.argv[1],{})
 e = resp['entities']
@@ -68,7 +69,7 @@ def output(message_body):
 	elif 'volume up' in message_body:
 		i = 0
 		while i < 10:
-			os.system('./bravia-auth-and-remote/send_command.sh 192.168.1.5 AAAAAQAAAAEAAAASAw==')
+			os.system('./bravia-auth-and-remote/send_command.sh 192.168.1.2 AAAAAQAAAAEAAAASAw==')
 			i += 1
 	elif message_body == 'tv volume down':
 		i = 0
